@@ -2,6 +2,11 @@
 {
     internal class Room
     {
-        public int RoomNumber { get; set; }
+        public Room(int number)
+        {
+            Number = number;
+        }
+
+        public int Number { get; set; }
     }
 }
