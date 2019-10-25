@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerEvents", "TimerEvents\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortString", "SortString\SortString.csproj", "{F9D48438-86D6-40B0-9957-5C78E333719E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeekAndArchive", "SeekAndArchive\SeekAndArchive.csproj", "{A3F88D11-7C7E-40E8-8B36-A92B7508EE20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F9D48438-86D6-40B0-9957-5C78E333719E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9D48438-86D6-40B0-9957-5C78E333719E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9D48438-86D6-40B0-9957-5C78E333719E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3F88D11-7C7E-40E8-8B36-A92B7508EE20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3F88D11-7C7E-40E8-8B36-A92B7508EE20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3F88D11-7C7E-40E8-8B36-A92B7508EE20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3F88D11-7C7E-40E8-8B36-A92B7508EE20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
