@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 
 namespace SeekAndArchive
 {
@@ -69,6 +70,10 @@ namespace SeekAndArchive
         private static void OnChanged(object sender, FileSystemEventArgs e)
         {
             Console.WriteLine($"{e.FullPath} was changed at {DateTime.Now}");
+
+            var file = new FileInfo(e.FullPath);
+
+            CompressFile(file);
         }
 
         private static void OnRenamed(object sender, RenamedEventArgs e)
@@ -95,6 +100,41 @@ namespace SeekAndArchive
         private static void DisposeWatchers()
         {
             Watchers.ForEach(w => w.Dispose());
+        }
+
+        private static DirectoryInfo CreateDirectoryForArchives(FileInfo file)
+        {
+            var directoryName = Path.GetDirectoryName(file.FullName);
+
+            return Directory.CreateDirectory(Path.Combine(directoryName, "Archives"));
+        }
+
+        private static string GetPathForCompression(FileInfo file, DirectoryInfo directory)
+        {
+            var simpleFileName = Path.GetFileNameWithoutExtension(file.Name);
+            var time = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            var fileName = string.Concat(simpleFileName, time, file.Extension);
+
+            return $"{Path.Combine(directory.FullName, fileName)}.gz";
+        }
+
+        private static void CompressFile(FileInfo file)
+        {
+            var directory = CreateDirectoryForArchives(file);
+            var path = GetPathForCompression(file, directory);
+
+            using (var fileStream = file.OpenRead())
+            {
+                using (var compressedFileStream = File.Create(path))
+                {
+                    using (var compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress))
+                    {
+                        fileStream.CopyTo(compressionStream);
+                    }
+                }
+            }
+
+            Console.WriteLine($"{file.FullName} has been archived as {path}");
         }
     }
 }
