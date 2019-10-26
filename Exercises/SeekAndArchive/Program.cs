@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.IO.IsolatedStorage;
 
 namespace SeekAndArchive
 {
@@ -135,6 +136,24 @@ namespace SeekAndArchive
             }
 
             Console.WriteLine($"{file.FullName} has been archived as {path}");
+
+            ArchiveIntoIsolatedStorage(new FileInfo(path));
+        }
+
+        private static void ArchiveIntoIsolatedStorage(FileInfo file)
+        {
+            var isoStore =
+                IsolatedStorageFile.GetStore(IsolatedStorageScope.User | IsolatedStorageScope.Assembly, null, null);
+
+            using (var isoStream = new IsolatedStorageFileStream(file.Name, FileMode.Create, isoStore))
+            {
+                using (var fileStream = new FileStream(file.FullName, FileMode.Open))
+                {
+                    fileStream.CopyTo(isoStream);
+                }
+            }
+
+            Console.WriteLine($"{file.FullName} has been archived into the isolated storage.");
         }
     }
 }
