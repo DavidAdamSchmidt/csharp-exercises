@@ -31,6 +31,8 @@ namespace RegularExpression
             }
             else
             {
+                TxtPhone.Text = Formatter.ReformatPhoneNumber(TxtPhone.Text);
+
                 MessageBox.Show("Your inputs have been successfully validated", "Success",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }
