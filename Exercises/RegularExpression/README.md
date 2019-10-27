@@ -56,7 +56,7 @@ For the corresponding Regex expressions use the examples in the presentation (fi
 In this exercise, you must reformat phone numbers into a standard (###) ###-#### format. You can implement it by extending the previous WinForms application. As an input, you expect a string which matches the following Regex pattern:
 
 ```csharp
-_^\(?(\d{3})\)?[\s\-]?(\d{3})\-?(\d{4})$_
+^\(?(\d{3})\)?[\s\-]?(\d{3})\-?(\d{4})$
 ```
 
 You should extract the matching groups from the input and reorganize them for the output format.
