@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegularExpression"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Input Validator" Height="240" Width="400">
     <Grid>
-        
+        <Label Content="Name" HorizontalAlignment="Left" Margin="63,23,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="TxtName" HorizontalAlignment="Left" Height="24" Margin="119,24,0,0" TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="203" RenderTransformOrigin="0.288,0.474" />
+        <Label Content="Phone" HorizontalAlignment="Left" Margin="63,63,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="TxtPhone" HorizontalAlignment="Left" Height="24" Margin="119,64,0,0" TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="203" RenderTransformOrigin="0.288,0.474" />
+        <Label Content="E-mail" HorizontalAlignment="Left" Margin="63,107,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="TxtEmail" HorizontalAlignment="Left" Height="24" Margin="119,108,0,0" TextWrapping="Wrap"
+                 VerticalAlignment="Top" Width="203" RenderTransformOrigin="0.288,0.474" />
+        <Button x:Name="BtnSave" Content="Save" HorizontalAlignment="Left" Margin="208,153,0,0" VerticalAlignment="Top"
+                Width="114" Click="BtnSave_Click" />
+
     </Grid>
 </Window>

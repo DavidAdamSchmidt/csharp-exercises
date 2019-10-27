@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeekAndArchive", "SeekAndAr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegularExpression", "RegularExpression\RegularExpression.csproj", "{FFD774FA-9826-4B7B-9552-5BA6FE4F9807}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegularExpression.UnitTests", "RegularExpression.UnitTests\RegularExpression.UnitTests.csproj", "{4C736571-A7D5-4B6C-917B-E39B0963D596}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FFD774FA-9826-4B7B-9552-5BA6FE4F9807}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD774FA-9826-4B7B-9552-5BA6FE4F9807}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFD774FA-9826-4B7B-9552-5BA6FE4F9807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C736571-A7D5-4B6C-917B-E39B0963D596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C736571-A7D5-4B6C-917B-E39B0963D596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C736571-A7D5-4B6C-917B-E39B0963D596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C736571-A7D5-4B6C-917B-E39B0963D596}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
