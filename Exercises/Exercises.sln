@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegularExpression", "Regula
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegularExpression.UnitTests", "RegularExpression.UnitTests\RegularExpression.UnitTests.csproj", "{4C736571-A7D5-4B6C-917B-E39B0963D596}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleThreadingDemo", "SimpleThreadingDemo\SimpleThreadingDemo.csproj", "{CD142674-14BD-45D4-BADD-AE759B3769E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{4C736571-A7D5-4B6C-917B-E39B0963D596}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C736571-A7D5-4B6C-917B-E39B0963D596}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C736571-A7D5-4B6C-917B-E39B0963D596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD142674-14BD-45D4-BADD-AE759B3769E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD142674-14BD-45D4-BADD-AE759B3769E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD142674-14BD-45D4-BADD-AE759B3769E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD142674-14BD-45D4-BADD-AE759B3769E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
