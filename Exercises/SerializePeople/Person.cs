@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace SerializePeople
 {
     [Serializable]
-    public class Person
+    public class Person : IDeserializationCallback
     {
         public enum Genders
         {
@@ -14,6 +14,8 @@ namespace SerializePeople
             Female
         }
 
+        [NonSerialized] private int _age;
+        private DateTime _birthDate;
         private readonly DateTime _currentDate;
 
         public Person()
@@ -24,12 +26,22 @@ namespace SerializePeople
         public Person(DateTime currentDate)
         {
             _currentDate = currentDate;
+
         }
 
         public string Name { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDate
+        {
+            get => _birthDate;
+            set
+            {
+                _birthDate = value;
+                CalculateAge();
+            }
+        }
+
         public Genders Gender { get; set; }
-        public int Age => CalculateAge();
+        public int Age => _age;
 
         public static Person Deserialize(string fileName)
         {
@@ -56,15 +68,20 @@ namespace SerializePeople
 
         public override string ToString()
         {
-            return $"Name = {Name}, BirthDate = {BirthDate:yyyy-MM-dd}, Gender = {Gender}, Age = {Age}";
+            return $"Name = {Name}, BirthDate = {_birthDate:yyyy-MM-dd}, Gender = {Gender}, Age = {_age}";
         }
 
-        private int CalculateAge()
+        public void OnDeserialization(object sender)
+        {
+            CalculateAge();
+        }
+
+        private void CalculateAge()
         {
             var now = int.Parse(_currentDate.ToString("yyyyMMdd"));
-            var born = int.Parse(BirthDate.ToString("yyyyMMdd"));
+            var born = int.Parse(_birthDate.ToString("yyyyMMdd"));
 
-            return (now - born) / 10000;
+            _age = (now - born) / 10000;
         }
     }
 }
