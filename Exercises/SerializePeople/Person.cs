@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SerializePeople
 {
@@ -28,6 +31,15 @@ namespace SerializePeople
         public Genders Gender { get; set; }
         public int Age => CalculateAge();
 
+        public void Serialize(string output)
+        {
+            IFormatter formatter = new BinaryFormatter();
+
+            using (Stream stream = new FileStream(output, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                formatter.Serialize(stream, this);
+            }
+        }
 
         public override string ToString()
         {

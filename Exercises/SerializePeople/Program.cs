@@ -6,12 +6,14 @@ namespace SerializePeople
     {
         private static void Main(string[] args)
         {
-            var erwin = new Person(new DateTime(2019, 11, 8))
+            var erwin = new Person
             {
                 Name = "Erwin",
-                BirthDate = new DateTime(1978, 11, 9),
+                BirthDate = new DateTime(1978, 5, 5),
                 Gender = Person.Genders.Male
             };
+
+            erwin.Serialize("erwin.bin");
 
             Console.WriteLine(erwin);
         }

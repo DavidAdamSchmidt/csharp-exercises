@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using NUnit.Framework;
 
 namespace SerializePeople.UnitTests
@@ -41,6 +42,18 @@ namespace SerializePeople.UnitTests
             _person.BirthDate = new DateTime(1919, 11, 9);
 
             Assert.AreEqual(99, _person.Age);
+        }
+
+        [Test]
+        public void Serialize_SerializeObject_FileShouldBeCreated()
+        {
+            _person.BirthDate = new DateTime(1978, 1, 1);
+            const string fileName = "test.bin";
+            File.Delete(fileName);
+
+            _person.Serialize(fileName);
+
+            Assert.True(File.Exists(fileName));
         }
     }
 }
