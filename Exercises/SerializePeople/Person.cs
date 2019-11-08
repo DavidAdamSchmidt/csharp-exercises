@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace SerializePeople
 {
     [Serializable]
-    public class Person : IDeserializationCallback
+    public class Person : IDeserializationCallback, ISerializable
     {
         public enum Genders
         {
@@ -29,7 +29,18 @@ namespace SerializePeople
 
         }
 
+        public Person(SerializationInfo info, StreamingContext context)
+            : this()
+        {
+            Name = (string) info.GetValue("Name", typeof(string));
+            _birthDate = (DateTime) info.GetValue("_birthDate", typeof(DateTime));
+            Gender = (Genders) info.GetValue("Gender", typeof(Genders));
+
+            CalculateAge();
+        }
+
         public string Name { get; set; }
+
         public DateTime BirthDate
         {
             get => _birthDate;
@@ -41,6 +52,7 @@ namespace SerializePeople
         }
 
         public Genders Gender { get; set; }
+
         public int Age => _age;
 
         public static Person Deserialize(string fileName)
@@ -66,14 +78,21 @@ namespace SerializePeople
             }
         }
 
-        public override string ToString()
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            return $"Name = {Name}, BirthDate = {_birthDate:yyyy-MM-dd}, Gender = {Gender}, Age = {_age}";
+            info.AddValue("Name", Name);
+            info.AddValue("_birthDate", _birthDate);
+            info.AddValue("Gender", Gender);
         }
 
         public void OnDeserialization(object sender)
         {
             CalculateAge();
+        }
+
+        public override string ToString()
+        {
+            return $"Name = {Name}, BirthDate = {_birthDate:yyyy-MM-dd}, Gender = {Gender}, Age = {_age}";
         }
 
         private void CalculateAge()
