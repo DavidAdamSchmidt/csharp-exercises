@@ -31,6 +31,19 @@ namespace SerializePeople
         public Genders Gender { get; set; }
         public int Age => CalculateAge();
 
+        public static Person Deserialize(string fileName)
+        {
+            Person person;
+            IFormatter formatter = new BinaryFormatter();
+
+            using (Stream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                person = formatter.Deserialize(stream) as Person;
+            }
+
+            return person;
+        }
+
         public void Serialize(string output)
         {
             IFormatter formatter = new BinaryFormatter();

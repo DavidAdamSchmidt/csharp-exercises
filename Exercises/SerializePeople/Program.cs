@@ -13,9 +13,17 @@ namespace SerializePeople
                 Gender = Person.Genders.Male
             };
 
-            erwin.Serialize("erwin.bin");
+            const string fileName = "erwin.bin";
 
-            Console.WriteLine(erwin);
+            erwin.Serialize(fileName);
+
+            var erwin2 = Person.Deserialize(fileName);
+
+            Console.WriteLine("Original:");
+            Console.WriteLine($"{erwin}{Environment.NewLine}");
+            Console.WriteLine("Deserialized:");
+            Console.WriteLine($"{erwin2}{Environment.NewLine}");
+            Console.WriteLine($"The properties of these object are equal: {erwin.ToString() == erwin2.ToString()}");
         }
     }
 }
